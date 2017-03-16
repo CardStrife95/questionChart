@@ -1,0 +1,7 @@
+faq_survey_homepage:
+    path:     /
+    defaults: { _controller: FAQSurveyBundle:Default:index }
+
+faq_survey_surveys:
+    path:     /surveys
+    defaults: { _controller: FAQSurveyBundle:Default:index } 

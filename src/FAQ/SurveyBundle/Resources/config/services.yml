@@ -1,0 +1,4 @@
+services:
+#    faq_survey.example:
+#        class: FAQ\SurveyBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
