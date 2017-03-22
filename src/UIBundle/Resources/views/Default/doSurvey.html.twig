@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Questionnaire</h1>
+    <div class="">
+    {% if survey %}
+        <h2>{{survey.name}}</h2>
+        <h3>{{survey.thema}}</h3>
+
+        {% if questions %}
+        <form method="POST" action="">
+                {% for question in questions%}
+                <div class="form-group">
+                <label for="{{question.content}}">{{question.content}}</label>
+                <div class="form-check">
+                    {% if answers%}
+                    <div class="list-group">
+                        {% for answer in answers %}
+                            {% if answer.question.id == question.id %}
+                            <p class="list-group-item"><label class="form-check-label"><input type="radio" class="form-check-input" name="optionsAnswers" value="{{answer.isAnswer}}"/>
+                            {{answer.content}}
+                            </label>
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                </div>    
+                {% endfor %}
+        {% endif %}
+        <input type="submit" class="btn btn-primary" value="Enregistrer les réponses"/>
+        </form>
+    {% endif %}
+    </div>
+{% endblock %}

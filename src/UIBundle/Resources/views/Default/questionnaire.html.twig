@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Questionnaires</h1>
+    <div class="row">
+        <div class="">
+        <h3>Liste des questionnaires disponibles</h3>
+        {% if surveys %}
+            {% for survey in surveys %}
+                <p><a href="{{path('ui_do_question',{'id':survey.id})}}">{{survey.name}} / {{survey.thema}}</a></p>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

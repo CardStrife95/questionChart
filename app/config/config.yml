@@ -4,6 +4,7 @@ imports:
     - { resource: services.yml }
     - { resource: "@FAQSurveyBundle/Resources/config/services.yml" }
     - { resource: "@AdminAdminBundle/Resources/config/services.yml" }
+    - { resource: "@UIBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -70,3 +71,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# FOS
+fos_user:
+     db_driver: orm
+     firewall_name: main
+     user_class: Admin\AdminBundle\Entity\User
+     from_email:
+         address: thierry.tran@ynov.com
+         sender_name: Question Chart

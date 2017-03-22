@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Survey</h1>
+
+    <div class="row">
+
+        <div class="col col-md-4">
+        <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ path('survey_index') }}">Back to the list</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ path('survey_edit', { 'id': survey.id }) }}">Edit</a>
+        </li>
+        <li class="list-group-item">
+            {{ form_start(delete_form) }}
+                <input class="btn btn-info" type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+
+    <div class="col col-md-6">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ survey.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ survey.name }}</td>
+            </tr>
+            <tr>
+                <th>Thema</th>
+                <td>{{ survey.thema }}</td>
+            </tr>
+            {% if questions %}
+            <tr>
+                <th>Questions</th>
+                <td>
+                    <ul>
+                        {% for question in questions%}
+                        {% if question.survey.id == survey.id%}
+                        <li>{{question.content}}</li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+    </div>
+
+    
+    </div>
+{% endblock %}

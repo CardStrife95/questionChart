@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% form_theme delete_form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+    <h1>Answer</h1>
+
+    <table class="table table-hover">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ answer.id }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ answer.content }}</td>
+            </tr>
+            <tr>
+                <th>Isanswer</th>
+                {% if answer.isAnswer %}<td class="alert alert-success">Yes</td>{% else %}<td>No</td>{% endif %}
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ path('answer_index') }}">Back to the list</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ path('question_index', { 'id': answer.id }) }}">Back to Questions</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ path('answer_edit', { 'id': answer.id }) }}">Edit</a>
+        </li>
+        <li class="list-group-item">
+            {{ form_start(delete_form) }}
+                <input class="btn btn-info" class=""type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Questions list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Survey</th>
+                <th>Content</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ path('question_show', { 'id': question.id }) }}">{{ question.id }}</a></td>
+                <td>{{ question.survey.name}}</td>
+                <td>{{ question.content }}
+                    <ul>
+                    {% for answer in answers %}
+                        {% if answer.question.id == question.id %}
+                        <li>{{answer.content}}</li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{{ path('question_show', { 'id': question.id }) }}">show</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ path('question_edit', { 'id': question.id }) }}">edit</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ path('answer_new', { 'id': question.id }) }}">Add Answer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="btn btn-primary" href="{{ path('question_new') }}">Create a new question</a>
+        </li>
+    </ul>
+{% endblock %}

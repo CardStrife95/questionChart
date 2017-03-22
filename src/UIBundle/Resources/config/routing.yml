@@ -1,0 +1,13 @@
+ui_homepage:
+    path:     /
+    defaults: { _controller: UIBundle:Default:index }
+
+ui_questionnaires:
+    path: /questionnaires
+    defaults:
+        _controller: UIBundle:Default:questionnaire
+
+ui_do_question:
+    path: /questionnaires/{id}
+    defaults:
+        _controller: UIBundle:Default:doSurvey

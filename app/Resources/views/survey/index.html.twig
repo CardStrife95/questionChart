@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Surveys list</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Thema</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for survey in surveys %}
+            <tr>
+                <td><a href="{{ path('survey_show', { 'id': survey.id }) }}">{{ survey.id }}</a></td>
+                <td>{{ survey.name }}</td>
+                <td>{{ survey.thema }}</td>
+                <td>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="{{ path('survey_show', { 'id': survey.id }) }}">show</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ path('survey_edit', { 'id': survey.id }) }}">edit</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{ path('question_new', { 'id': survey.id }) }}">Add Question</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ path('survey_new') }}">Create a new survey</a>
+        </li>
+    </ul>
+{% endblock %}

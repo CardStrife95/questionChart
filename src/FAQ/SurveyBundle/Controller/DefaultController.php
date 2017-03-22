@@ -11,8 +11,4 @@ class DefaultController extends Controller
         return $this->render('FAQSurveyBundle:Default:index.html.twig');
     }
 
-    public function suerversAction()
-    {
-        
-    }
 }
